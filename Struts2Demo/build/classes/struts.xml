@@ -6,11 +6,30 @@
 <!--    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" -->
 <!--    "http://struts.apache.org/dtds/struts-2.0.dtd"> -->
 <struts>
-	<constant name="struts.devMode" value="true" />
-		<package name="base" extends="struts-default">
-			<action name="hello" class="com.ntt.helloworld.HelloWorldAction" method="execute">
-				<result name="success">/content/pages/HelloWorld.jsp</result>							
-			</action>
-		</package>
-<!-- 	</constant> -->
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="1000000000"></constant>
+	<package name="base" extends="struts-default">
+		<action name="hello" class="com.ntt.helloworld.HelloWorldAction" method="execute">
+<!-- 			<interceptor-ref name="param"/> -->
+<!-- 			<interceptor-ref name="timer"/> -->
+			<result name="success">
+				/content/pages/HelloWorld.jsp
+			</result>
+		</action>
+		
+		<action name="upload" class="com.ntt.helloworld.UploadFile">
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="fileUpload">
+				<param name="allowTypes">image/jpeg,image/gif,pdf</param>
+			</interceptor-ref>
+			<result name="success">/content/pages/upload-success.jsp</result>
+			<result name="error">/content/pages/upload-error.jsp</result>
+		</action>
+		
+		<action name="validate" class="com.ntt.helloworld.Employee" method="execute">
+			<result name="success">/content/pages/success.jsp</result>
+			<result name="error">/content/pages/error.jsp</result>
+			<result name="input">/content/pages/employee.jsp</result>
+		</action>
+	</package>
 </struts>

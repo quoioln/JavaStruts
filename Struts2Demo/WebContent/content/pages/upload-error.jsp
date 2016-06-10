@@ -5,13 +5,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>View</title>
+<title>Upload File Error</title>
 </head>
 <body>
-	Hello ${name.substring(2)} , You are <s:property value="age"/>. You are <s:property value="render"/>
-	<br>
-	Key 1: ${key1 }.
-	<br>
-	Key 2: ${key2 }.
+	<h1>Upload file error</h1>
 </body>
 </html>

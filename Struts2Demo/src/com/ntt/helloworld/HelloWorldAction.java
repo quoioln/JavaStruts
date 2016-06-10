@@ -3,6 +3,12 @@
  */
 package com.ntt.helloworld;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.util.ValueStack;
+
 /**
  * @author vpquoi
  *
@@ -13,8 +19,13 @@ public class HelloWorldAction {
 	private String age;
 	private String render;
 	public String execute() throws Exception {
+		ValueStack stack = ActionContext.getContext().getValueStack();
+		Map<String, String> context = new HashMap<String, String>();
+		context.put("key1", "key 1");
+		context.put("key2", "key 2");
 		System.out.println("welcome to controller");
 		render = "male";
+		stack.push(context);
 		return "success";
 	}
 
